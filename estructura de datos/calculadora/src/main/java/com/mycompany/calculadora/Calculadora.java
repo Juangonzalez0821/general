@@ -28,17 +28,22 @@ public class Calculadora {
                 case 1:
                     r= n1 + n2 ;
                     System.out.println("el resultado de la suma de los dos numeros es: " + r);
+                    break;
                 case 2:
                     r= n1 - n2 ;
                     System.out.println("el resultado de la resta de los dos numeros es: " + r);
+                    break;
                 case 3:
                     r= n1 * n2 ;
                     System.out.println("el resultado de la Multiplicacion de los dos numeros es: " + r);
+                    break;
                 case 4:
                     r= n1 / n2 ;
                     System.out.println("el resultado de la Division de los dos numeros es: " + r);
+                    break;
                 default:
                     System.out.println("la opcion que ingresaste es invalida");
+                    
             }
         }
     }
