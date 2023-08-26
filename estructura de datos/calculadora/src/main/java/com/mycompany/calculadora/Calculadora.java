@@ -38,8 +38,12 @@ public class Calculadora {
                     System.out.println("el resultado de la Multiplicacion de los dos numeros es: " + r);
                     break;
                 case 4:
-                    r= n1 / n2 ;
-                    System.out.println("el resultado de la Division de los dos numeros es: " + r);
+                    if (n2 != 0) { // Verifica que el divisor no sea cero para evitar divisi�n por cero
+                        r= n1 / n2 ;
+                        System.out.println("el resultado de la Division de los dos numeros es: " + r);
+                    } else {
+                        System.out.println("No es posible dividir entre cero");
+                    }
                     break;
                 default:
                     System.out.println("la opcion que ingresaste es invalida");
