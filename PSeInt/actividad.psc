@@ -1,7 +1,7 @@
 Algoritmo actividad
 
     // Se le pregunta al usuario si desea calcular el área o el volumen
-    escribir "?Quieres saber el area o el volumen?"
+    escribir "¿Quieres saber el area o el volumen?"
     escribir "1 Selecciona el area"
     escribir "2 Selecciona el volumen"
     leer e
