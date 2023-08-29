@@ -27,24 +27,24 @@ public class Trabajo1 {
                     double Altura  = teclado.nextDouble();
                     double Perimetro = 2 * (Base + Altura);
                     double Area  = Base * Altura;
-                    System.out.println("El área del Rectangulo es: " + Area);
-                    System.out.println("El perímetro del Rectangulo es: " + Perimetro);
+                    System.out.println("El area del Rectangulo es: " + Area);
+                    System.out.println("El perimetro del Rectangulo es: " + Perimetro);
                 }
                 case 2 -> {
                     System.out.print("Ingresa la medida de un lado del Cuadrado: ");
                     double lado  = teclado.nextDouble();
                     double Perimetro = 4 * lado ;
                     double Area  = lado  * lado;
-                    System.out.println("El área del Cuadrado es: " + Area);
-                    System.out.println("El perímetro del Cuadrado es: " + Perimetro);
+                    System.out.println("El area del Cuadrado es: " + Area);
+                    System.out.println("El perimetro del Cuadrado es: " + Perimetro);
                 }
                 case 3 -> {
                     int t = 1;
                     do{
-                        System.out.println("1. Triángulo Rectángulo");
-                        System.out.println("2. Triángulo Equilátero");
-                        System.out.println("3. Triángulo Isósceles o Escaleno");
-                        System.out.print("Seleccione el tipo de triángulo: ");
+                        System.out.println("1. Triangulo Rectangulo");
+                        System.out.println("2. Triangulo Equilatero");
+                        System.out.println("3. Triangulo Isosceles o Escaleno");
+                        System.out.print("Seleccione el tipo de Triangulo: ");
                         int opci = teclado.nextInt();
                 
                         switch (opci) {
@@ -57,16 +57,16 @@ public class Trabajo1 {
                                 double hipotenusa = teclado.nextDouble();
                                 double area = (cateto1 * hipotenusa) / 2;
                                 double perimetro = cateto1 + cateto2 + hipotenusa;
-                                System.out.println("Área del triángulo rectángulo: " + area);
-                                System.out.println("Perímetro del triángulo rectángulo: " + perimetro);
+                                System.out.println("area del Triangulo Rectangulo: " + area);
+                                System.out.println("perimetro del Triangulo Rectangulo: " + perimetro);
                             }
                             case 2 -> {
-                                System.out.print("Ingresa la longitud de un lado del triángulo equilátero: ");
+                                System.out.print("Ingresa la longitud de un lado del Triangulo Equilatero: ");
                                 double lado = teclado.nextDouble();
                                 double area = (Math.sqrt(3) / 4)*(lado*lado);
                                 double p  = lado * 3;
-                                System.out.println("Área del triángulo equilátero: " + area);
-                                System.out.println("Perímetro del triángulo equilátero: " + p);
+                                System.out.println("area del Triangulo Equilatero: " + area);
+                                System.out.println("perimetro del Triangulo Equilatero: " + p);
                             }
                             case 3 -> {
                                 System.out.print("Ingresa la longitud del lado 1: ");
@@ -78,8 +78,8 @@ public class Trabajo1 {
                                 double perimetro = lado1 + lado2 + lado3;
                                 double semip = perimetro/ 2;
                                 double area = Math.sqrt(semip * (semip - lado1) * (semip - lado2) * (semip - lado3));
-                                System.out.println("Área del triángulo cualquiera: " + area);
-                                System.out.println("Perímetro del triángulo cualquiera: " + perimetro);
+                                System.out.println("area de un Isosceles o Escaleno: " + area);
+                                System.out.println("perimetro de un Isosceles o Escaleno: " + perimetro);
                             }
                             default -> {
                                 System.out.println("la opcion que ingresaste es invalida\n");
@@ -102,16 +102,16 @@ public class Trabajo1 {
                     double lado2 = teclado.nextDouble();
                     double area = ((baseMayor + baseMenor) / 2) * altura;
                     double perimetro = baseMayor + baseMenor + lado1 + lado2;
-                    System.out.println("El área del trapecio es: " + area);
-                    System.out.println("El perímetro del trapecio es: " + perimetro);
+                    System.out.println("El area del trapecio es: " + area);
+                    System.out.println("El perimetro del trapecio es: " + perimetro);
                 }
                 case 5 -> {
                     System.out.print("Ingresa el numero del cual deseas saber la tabla: ");
                     double num = teclado.nextDouble();
                     if (num % 2 == 0) {
-                        System.out.println("El número es par.");
+                        System.out.println("El numero es par.");
                     } else {
-                        System.out.println("El número es impar.");
+                        System.out.println("El numero es impar.");
                     }
                     for (int i = 1; i <= 10; i++) {
                         int resultado = (int) (num * i);
