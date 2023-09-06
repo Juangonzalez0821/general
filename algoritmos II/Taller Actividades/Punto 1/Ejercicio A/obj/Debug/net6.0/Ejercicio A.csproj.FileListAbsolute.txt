@@ -1,0 +1,15 @@
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\bin\Debug\net6.0\Ejercicio A.exe
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\bin\Debug\net6.0\Ejercicio A.deps.json
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\bin\Debug\net6.0\Ejercicio A.runtimeconfig.json
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\bin\Debug\net6.0\Ejercicio A.dll
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\bin\Debug\net6.0\Ejercicio A.pdb
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.csproj.AssemblyReference.cache
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.AssemblyInfoInputs.cache
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.AssemblyInfo.cs
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.csproj.CoreCompileInputs.cache
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.dll
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\refint\Ejercicio A.dll
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.pdb
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\Ejercicio A.genruntimeconfig.cache
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\Taller Actividades\Punto 1\Ejercicio A\obj\Debug\net6.0\ref\Ejercicio A.dll
