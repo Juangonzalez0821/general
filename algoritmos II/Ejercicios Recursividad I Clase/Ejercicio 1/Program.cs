@@ -17,5 +17,7 @@ class Program
         int exponent = 5;
         int result = Power(baseNum, exponent);
         Console.WriteLine($"{baseNum} elevado a la potencia {exponent} es: {result}");
+        Console.WriteLine("Presione cualquier tecla para salir.");
+        Console.ReadKey();
     }
 }
