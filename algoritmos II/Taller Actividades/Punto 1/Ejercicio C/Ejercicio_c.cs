@@ -8,6 +8,7 @@ class Ejercicio_c
     {
         int cp = 0;
         int cip = 0;
+        Console.WriteLine("Contar números pares e impares: ");
         Console.WriteLine("Digite la cantidad de números que quiere contar");
         int n = int.Parse(Console.ReadLine());
 
