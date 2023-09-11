@@ -19,9 +19,11 @@ class Ejercicio_c
             if (n1 % 2 ==0)
             {
                 cp++;
+                Console.WriteLine("El numero ingresado es par ");
             }else
             {
                 cip++;
+                Console.WriteLine("El numero ingresado es impar ");
             }
         }
         Console.WriteLine("El número de pares es: {0}", cp);
