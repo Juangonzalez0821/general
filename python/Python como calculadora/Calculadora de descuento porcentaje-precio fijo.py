@@ -21,12 +21,8 @@ else:
     print("Opción de descuento no válida. Por favor, ingrese 'porcentaje' o 'monto'.")
     exit()
 
-# Calcular el precio final con IVA nuevamente
-precio_final_con_iva = precio_despues_descuento * 1.19  # 19% de IVA
-
 # Mostrar el resultado
 print("\nResumen de la compra:")
 print(f"Precio original con IVA: ${precio_original_con_iva:.2f}")
 print(f"Precio sin IVA: ${precio_sin_iva:.2f}")
 print(f"Precio después del descuento: ${precio_despues_descuento:.2f}")
-print(f"Precio final con IVA: ${precio_final_con_iva:.2f}")
