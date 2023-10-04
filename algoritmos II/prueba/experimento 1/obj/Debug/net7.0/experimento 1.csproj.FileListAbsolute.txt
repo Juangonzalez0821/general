@@ -1,0 +1,4 @@
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\prueba\experimento 1\obj\Debug\net7.0\experimento 1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\prueba\experimento 1\obj\Debug\net7.0\experimento 1.AssemblyInfoInputs.cache
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\prueba\experimento 1\obj\Debug\net7.0\experimento 1.AssemblyInfo.cs
+C:\Users\Gonzalez\Documents\GitHub\general\algoritmos II\prueba\experimento 1\obj\Debug\net7.0\experimento 1.csproj.CoreCompileInputs.cache
