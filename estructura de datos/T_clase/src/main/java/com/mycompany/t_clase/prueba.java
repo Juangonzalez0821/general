@@ -1,13 +1,21 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.t_clase;
 
 import java.util.Scanner;
 
+/**
+ *
+ * @author Gonzalez
+ */
+public class prueba {
 
-public class T_clase {
-
+    /**
+     * @param arg
+     * @param opc 
+     */
     public static void main(String[]arg){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Hello World!");
