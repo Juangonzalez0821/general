@@ -5,10 +5,7 @@
 package com.mycompany.proyecto1_1;
 
 import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -30,9 +27,10 @@ public class Proyecto1_1 {
         ArrayList<String> nombrepro = new ArrayList<>();
         ArrayList<Float> preciopro = new ArrayList<>();
         ArrayList<Integer> cantidadpro = new ArrayList<>();
-        ArrayList<Date> fechaVencimientopro = new ArrayList<>();
+        ArrayList<String> fechaVencimientopro = new ArrayList<>();
 
         cargarDatosInventario(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
+        ordenar(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
         do {
             n=1;
             System.out.println("¿Que proceso desea realizar?");
@@ -51,17 +49,45 @@ public class Proyecto1_1 {
                         case 1:
                             System.out.println("agregar producto");
                             int id=escribirEnteros("ingrese el ID: ", entrada);
-                            idpro.add(id);
-                            String nombre=escribirCaracter("ingrese el nombre del producto", entrada);
-                            nombrepro.add(nombre); 
-                            Float precio=escribirReales("ingrese el precio del producto", entrada);
-                            preciopro.add(precio); 
-                            int cantidad=escribirEnteros("ingrese la cantidad del producto", entrada);
-                            cantidadpro.add(cantidad); 
-                            Date fecha=escribirFecha("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada);
-                            fechaVencimientopro.add(fecha);
+                            int nR=noRepetir(idpro, id);
+                            if (nR==1) {
+                                idpro.add(id);
+                                String nombre=escribirCaracter("ingrese el nombre del producto", entrada);
+                                nombrepro.add(nombre); 
+                                Float precio=escribirReales("ingrese el precio del producto", entrada);
+                                preciopro.add(precio); 
+                                int cantidad=escribirEnteros("ingrese la cantidad del producto", entrada);
+                                cantidadpro.add(cantidad); 
+                                String fecha=escribirCaracter("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada);
+                                fechaVencimientopro.add(fecha);
+                            } else {
+                                System.out.println("el id ingresado ya esta en uso");
+                            }
+                            
                             break;
                         case 2:
+                            int indice= buscarIndice("ingrese el id del producto", entrada, idpro);
+                            
+                            if (indice!=-1) {
+                                id = escribirEnteros("escriba el id del producto actualizado", entrada);
+                                nR=noRepetir(idpro, id);
+                                if (nR==1) {
+                                    String auxnombre=escribirCaracter("ingrese el nombre del producto", entrada);
+                                    Float auxprecio=escribirReales("ingrese el precio del producto", entrada);                            
+                                    int auxcantidad=escribirEnteros("ingrese la cantidad del producto", entrada);                            
+                                    String auxfecha=escribirCaracter("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada);
+                                    idpro.set(indice, id);
+                                    nombrepro.set(indice, auxnombre);
+                                    preciopro.set(indice, auxprecio); 
+                                    cantidadpro.set(indice, auxcantidad);
+                                    fechaVencimientopro.set(indice, auxfecha);
+                                } else {
+                                    System.out.println("el id ingresado ya esta en uso");
+                                }
+                                
+                            }else {
+                                System.out.println("no se encontro el id ingresado");
+                            }
                             
                             break;
                         default:
@@ -104,25 +130,15 @@ public class Proyecto1_1 {
         return entrada.nextFloat();
     }
 
-    public static Date escribirFecha(String mensaje, Scanner entrada){
-        System.out.println(mensaje);
-        String fechaString = entrada.next();
-        SimpleDateFormat formato =new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            return formato.parse(fechaString);
-        } catch (ParseException e) {
-            System.out.println("Formato de fecha incorrecto. Utiliza el formato dd/MM/yyyy.");
-            return null;
-        }
-    }
 
-    public static void mostrarInventario(ArrayList<Integer> idpro,ArrayList<String> nombrepro,ArrayList<Float> preciopro,ArrayList<Integer> cantidadpro,ArrayList<Date>fechaVencimientopro ) {
+
+    public static void mostrarInventario(ArrayList<Integer> idpro,ArrayList<String> nombrepro,ArrayList<Float> preciopro,ArrayList<Integer> cantidadpro,ArrayList<String>fechaVencimientopro ) {
         for (int i = 0; i < idpro.size(); i++) {
-            System.out.printf(" %-20s %-20s %-20s %-20s %-20s\n",  idpro.get(i),nombrepro.get(i),preciopro.get(i),cantidadpro.get(i),fechaVencimientopro.get(i));
+            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n",  idpro.get(i),nombrepro.get(i),preciopro.get(i),cantidadpro.get(i),fechaVencimientopro.get(i));
         }
     }
 
-    private static void cargarDatosInventario(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<Date> fechaVencimientopro) {
+    private static void cargarDatosInventario(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<String> fechaVencimientopro) {
         try (BufferedReader br = new BufferedReader(new FileReader("inventario.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -131,8 +147,7 @@ public class Proyecto1_1 {
                 nombrepro.add(parts[1]);
                 preciopro.add(Float.parseFloat(parts[2]));
                 cantidadpro.add(Integer.parseInt(parts[3]));
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                fechaVencimientopro.add(dateFormat.parse(parts[4]));
+                fechaVencimientopro.add(parts[4]);
             }
         } catch (FileNotFoundException e) {
             // El archivo no existe, se inicia con un inventario vacío.
@@ -141,7 +156,7 @@ public class Proyecto1_1 {
         }
     }
 
-    private static void guardarDatosInventario(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<Date> fechaVencimientopro) {
+    private static void guardarDatosInventario(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<String> fechaVencimientopro) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("inventario.txt"))) {
             for (int i = 0; i < idpro.size(); i++) {
                 String line = idpro.get(i) + "," + nombrepro.get(i) + "," + preciopro.get(i) + "," + cantidadpro.get(i) + "," + fechaVencimientopro.get(i);
@@ -152,5 +167,66 @@ public class Proyecto1_1 {
             e.printStackTrace();
         }
     }
+    //buscar el indice de un producto
+    public static int buscarIndice (String mensaje, Scanner entrada, ArrayList<Integer> idpro) {
+        System.out.println(mensaje);
+        int aux= entrada.nextInt();
+        for (int i = 0; i < idpro.size(); i++) {
+            if (aux==idpro.get(i)) {
+                return i;
+            }
+        }
+
+        // Si no se encontró ninguna coincidencia, devolver -1
+        return -1;
+    }
+    //metodo para que no se repita el id de los productos
+    public static int noRepetir(ArrayList<Integer> idpro,int id) {
+        for (int i = 0; i < idpro.size(); i++) {
+            if (id==idpro.get(i)) {
+                return -1;
+            }
+        }
+        return 1;
+    }
+
+    public static void ordenar(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<String> fechaVencimientopro) {
+        // Método de ordenamiento de burbuja
+        int n = idpro.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (idpro.get(j) > idpro.get(j + 1)) {
+                    // Intercambiar los elementos mal ordenados del idpro
+                    int tempId = idpro.get(j);
+                    idpro.set(j, idpro.get(j + 1));
+                    idpro.set(j + 1, tempId);
+    
+                    // Intercambiar el nombre con respecto al id
+                    String tempNombre = nombrepro.get(j);
+                    nombrepro.set(j, nombrepro.get(j + 1));
+                    nombrepro.set(j + 1, tempNombre);
+    
+                    // Intercambiar el precio
+                    float tempPrecio = preciopro.get(j);
+                    preciopro.set(j, preciopro.get(j + 1));
+                    preciopro.set(j + 1, tempPrecio);
+    
+                    // Intercambiar la cantidad
+                    int tempCantidad = cantidadpro.get(j);
+                    cantidadpro.set(j, cantidadpro.get(j + 1));
+                    cantidadpro.set(j + 1, tempCantidad);
+    
+                    // Intercambiar la fecha de vencimiento
+                    String tempFecha = fechaVencimientopro.get(j);
+                    fechaVencimientopro.set(j, fechaVencimientopro.get(j + 1));
+                    fechaVencimientopro.set(j + 1, tempFecha);
+                }
+            }
+        }
+    }
+    
+
+
+
 
 }
