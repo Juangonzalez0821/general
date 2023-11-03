@@ -1,140 +1,134 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
-package com.mycompany.proyecto1_1;
+package com.mycompany.proyecto1_1; // Declaración del paquete, este código pertenece al paquete com.mycompany.proyecto1_1.
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author Gonzalez
- */
-public class Proyecto1_1 {
+public class Proyecto1_1 { // Define la clase principal "Proyecto1_1".
 
-    public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Hello World!");
-        
-        //definir variables
-        int opc,n;
+    public static void main(String[] args) { // El método principal, el punto de entrada de tu programa Java.
+        Scanner entrada = new Scanner(System.in); // Crea un objeto Scanner para la entrada del usuario.
+        System.out.println("Hello World!"); // Imprime "Hello World!" en la consola.
 
+        // Definir variables
+        int opc, n; // Declarar dos variables enteras opc y n.
 
-        //definir arrays para el inventario
-        ArrayList<Integer> idpro = new ArrayList<>();
-        ArrayList<String> nombrepro = new ArrayList<>();
-        ArrayList<Float> preciopro = new ArrayList<>();
-        ArrayList<Integer> cantidadpro = new ArrayList<>();
-        ArrayList<String> fechaVencimientopro = new ArrayList<>();
+        // Definir arrays para el inventario
+        ArrayList<Integer> idpro = new ArrayList<>(); // Crea un ArrayList para almacenar los ID de productos.
+        ArrayList<String> nombrepro = new ArrayList<>(); // Crea un ArrayList para almacenar nombres de productos (como cadenas).
+        ArrayList<Float> preciopro = new ArrayList<>(); // Crea un ArrayList para almacenar precios de productos (como números de punto flotante).
+        ArrayList<Integer> cantidadpro = new ArrayList<>(); // Crea un ArrayList para almacenar cantidades de productos (como enteros).
+        ArrayList<String> fechaVencimientopro = new ArrayList<>(); // Crea un ArrayList para almacenar fechas de vencimiento de productos (como cadenas).
 
+        // Cargar datos del inventario desde un archivo (el método 'cargarDatosInventario' debería estar definido en alguna parte de tu código).
         cargarDatosInventario(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
+
+        // Ordenar los datos del inventario (el método 'ordenar' debería estar definido en alguna parte de tu código).
         ordenar(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
+
         do {
-            n=1;
-            System.out.println("¿Que proceso desea realizar?");
-            System.out.println("1. Actualizar inventario");
-            System.out.println("2. Agregar venta");
-            System.out.println("3. Ver inventario");
-            System.out.println("4. Terminar proceso");
-            opc = entrada.nextInt();
-            switch (opc) {
-                case 1:
-                    System.out.println("Actualizar inventario");
-                    System.out.println("1. Agregar producto");
-                    System.out.println("2. modificar producto");
-                    opc = entrada.nextInt();
-                    switch (opc) {
-                        case 1:
-                            System.out.println("agregar producto");
-                            int id=escribirEnteros("ingrese el ID: ", entrada);
-                            int nR=noRepetir(idpro, id);
-                            if (nR==1) {
-                                idpro.add(id);
-                                String nombre=escribirCaracter("ingrese el nombre del producto", entrada);
-                                nombrepro.add(nombre); 
-                                Float precio=escribirReales("ingrese el precio del producto", entrada);
-                                preciopro.add(precio); 
-                                int cantidad=escribirEnteros("ingrese la cantidad del producto", entrada);
-                                cantidadpro.add(cantidad); 
-                                String fecha=escribirCaracter("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada);
-                                fechaVencimientopro.add(fecha);
+            n = 1; // Inicializa la variable 'n' a 1.
+            System.out.println("¿Qué proceso desea realizar?"); // Muestra un mensaje en la consola preguntando al usuario qué proceso desea realizar.
+            System.out.println("1. Actualizar inventario"); // Muestra la opción 1: "Actualizar inventario" en la consola.
+            System.out.println("2. Agregar venta"); // Muestra la opción 2: "Agregar venta" en la consola.
+            System.out.println("3. Ver inventario"); // Muestra la opción 3: "Ver inventario" en la consola.
+            System.out.println("4. Terminar proceso"); // Muestra la opción 4: "Terminar proceso" en la consola.           
+            opc = entrada.nextInt(); // Lee la opción elegida por el usuario desde la entrada estándar.
+
+            switch (opc) { // Inicia una estructura de control 'switch' basada en el valor de 'opc'.
+                case 1: // Si 'opc' es igual a 1, ejecuta lo siguiente:
+                    System.out.println("Actualizar inventario"); // Muestra un mensaje indicando que se está actualizando el inventario.
+                    System.out.println("1. Agregar producto"); // Muestra la opción 1: "Agregar producto" en la consola.
+                    System.out.println("2. Modificar producto"); // Muestra la opción 2: "Modificar producto" en la consola.
+                    opc = entrada.nextInt(); // Lee la elección del usuario entre agregar o modificar producto.
+            
+                    switch (opc) { // Inicia un segundo 'switch' basado en la elección de agregar o modificar.
+                        case 1: // Si 'opc' es igual a 1, ejecuta lo siguiente:
+                            System.out.println("Agregar producto"); // Muestra un mensaje indicando que se está agregando un producto.
+                            int id = escribirEnteros("Ingrese el ID: ", entrada); // Llama a la función 'escribirEnteros' para obtener el ID del producto.
+                            int nR = noRepetir(idpro, id); // Llama a la función 'noRepetir' para verificar si el ID ya existe en el inventario.
+                            if (nR == 1) { // Si el ID no se repite, realiza lo siguiente:
+                                idpro.add(id); // Agrega el ID a la lista de IDs de productos.
+                                String nombre = escribirCaracter("Ingrese el nombre del producto: ", entrada); // Llama a la función 'escribirCaracter' para obtener el nombre del producto.
+                                nombrepro.add(nombre); // Agrega el nombre a la lista de nombres de productos.
+                                Float precio = escribirReales("Ingrese el precio del producto: ", entrada); // Llama a la función 'escribirReales' para obtener el precio del producto.
+                                preciopro.add(precio); // Agrega el precio a la lista de precios de productos.
+                                int cantidad = escribirEnteros("Ingrese la cantidad del producto: ", entrada); // Llama a la función 'escribirEnteros' para obtener la cantidad del producto.
+                                cantidadpro.add(cantidad); // Agrega la cantidad a la lista de cantidades de productos.
+                                String fecha = escribirCaracter("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada); // Llama a la función 'escribirCaracter' para obtener la fecha de vencimiento del producto.
+                                fechaVencimientopro.add(fecha); // Agrega la fecha de vencimiento a la lista.
                             } else {
-                                System.out.println("el id ingresado ya esta en uso");
+                                System.out.println("El ID ingresado ya está en uso");
                             }
-                            
                             break;
-                        case 2:
-                            int indice= buscarIndice("ingrese el id del producto", entrada, idpro);
-                            
-                            if (indice!=-1) {
-                                id = escribirEnteros("escriba el id del producto actualizado", entrada);
-                                nR=noRepetir(idpro, id);
-                                if (nR==1) {
-                                    String auxnombre=escribirCaracter("ingrese el nombre del producto", entrada);
-                                    Float auxprecio=escribirReales("ingrese el precio del producto", entrada);                            
-                                    int auxcantidad=escribirEnteros("ingrese la cantidad del producto", entrada);                            
-                                    String auxfecha=escribirCaracter("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada);
-                                    idpro.set(indice, id);
-                                    nombrepro.set(indice, auxnombre);
-                                    preciopro.set(indice, auxprecio); 
-                                    cantidadpro.set(indice, auxcantidad);
-                                    fechaVencimientopro.set(indice, auxfecha);
+                        case 2: // Si 'opc' es igual a 2, ejecuta lo siguiente:
+                            int indice = buscarIndice("Ingrese el ID del producto a actualizar: ", entrada, idpro); // Llama a la función 'buscarIndice' para encontrar el índice del producto a actualizar.
+                            if (indice != -1) { // Si se encuentra el índice, realiza lo siguiente:
+                                id = escribirEnteros("Escriba el ID del producto actualizado: ", entrada); // Lee el nuevo ID del producto actualizado.
+                                nR = noRepetir(idpro, id); // Llama a la función 'noRepetir' para verificar si el nuevo ID ya existe en el inventario.
+                                if (nR == 1) { // Si el nuevo ID no se repite, realiza lo siguiente:
+                                    String auxnombre = escribirCaracter("Ingrese el nombre del producto: ", entrada); // Llama a la función 'escribirCaracter' para obtener el nombre actualizado del producto.
+                                    Float auxprecio = escribirReales("Ingrese el precio del producto: ", entrada); // Llama a la función 'escribirReales' para obtener el precio actualizado del producto.
+                                    int auxcantidad = escribirEnteros("Ingrese la cantidad del producto: ", entrada); // Llama a la función 'escribirEnteros' para obtener la cantidad actualizada del producto.
+                                    String auxfecha = escribirCaracter("Ingrese la fecha de vencimiento (dd/MM/yyyy): ", entrada); // Llama a la función 'escribirCaracter' para obtener la fecha de vencimiento actualizada del producto.
+                                    idpro.set(indice, id); // Actualiza el ID en la lista de IDs de productos.
+                                    nombrepro.set(indice, auxnombre); // Actualiza el nombre en la lista de nombres de productos.
+                                    preciopro.set(indice, auxprecio); // Actualiza el precio en la lista de precios de productos.
+                                    cantidadpro.set(indice, auxcantidad); // Actualiza la cantidad en la lista de cantidades de productos.
+                                    fechaVencimientopro.set(indice, auxfecha); // Actualiza la fecha de vencimiento en la lista.
                                 } else {
-                                    System.out.println("el id ingresado ya esta en uso");
+                                    System.out.println("El ID ingresado ya está en uso");
                                 }
-                                
-                            }else {
-                                System.out.println("no se encontro el id ingresado");
+                            } else {
+                                System.out.println("No se encontró el ID ingresado");
                             }
-                            
                             break;
                         default:
                             break;
                     }
                     break;
+            
                 case 2:
                     System.out.println("Agregar venta");
                     break;
-                case 3:
-                    System.out.println("Ver inventario");
-                    System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "id", "nombre", "precio", "cantidad", "fecha vencimiento");
-                    
-                    mostrarInventario(idpro,nombrepro,preciopro,cantidadpro,fechaVencimientopro);
-                    break;
-                case 4:
-                    System.out.println("fin del proceso");
-                    n=0;
-                    break;
-                default:
-                    System.out.println("Opcion incorrecta");
-                    break;
-            }
-            guardarDatosInventario(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
-        } while (n!=0);
+                case 3: // Si 'opc' es igual a 3, ejecuta lo siguiente:
+                    System.out.println("Ver inventario"); // Muestra un mensaje indicando que se está visualizando el inventario.
+                    System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "id", "nombre", "precio", "cantidad", "fecha vencimiento"); // Imprime una cabecera de tabla con encabezados de columnas formateados.
+                
+                    mostrarInventario(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro); // Llama a la función 'mostrarInventario' para mostrar el inventario en la consola.
+                    break;                
+                case 4: // Si 'opc' es igual a 4, ejecuta lo siguiente:
+                    System.out.println("Fin del proceso"); // Muestra un mensaje indicando que el proceso está terminando.
+                    n = 0; // Asigna 0 a la variable 'n' para finalizar el bucle y, por lo tanto, el proceso.
+                    break; // Sale del 'switch' y continúa con el bucle 'do-while'.            
+                default: // Si 'opc' no coincide con ningún caso anterior, ejecuta lo siguiente:
+                    System.out.println("Opción incorrecta"); // Muestra un mensaje indicando que la opción elegida es incorrecta.
+                    break; // Sale del 'switch'.
+                
+            } // Cierra el bloque del 'switch' interno que maneja la opción de agregar o modificar productos.
+            guardarDatosInventario(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro); // Llama a la función 'guardarDatosInventario' para guardar los datos del inventario.
+        } while (n != 0); // Ejecuta el bucle 'do-while' mientras 'n' no sea igual a 0, lo que permite al usuario realizar más acciones o finalizar el proceso.
     }
 
-    public static int escribirEnteros(String mensaje, Scanner entrada){
-        System.out.println(mensaje);
-        return entrada.nextInt();
+    public static int escribirEnteros(String mensaje, Scanner entrada) {
+        System.out.println(mensaje); // Muestra un mensaje recibido como argumento, que solicita un número entero.
+        return entrada.nextInt(); // Lee y retorna un número entero ingresado por el usuario desde el objeto Scanner 'entrada'.
     }
 
     public static String escribirCaracter(String mensaje, Scanner entrada) {
-        System.out.println(mensaje);
-        return entrada.next();
+        System.out.println(mensaje); // Muestra un mensaje recibido como argumento, que solicita una cadena de texto.
+        return entrada.next(); // Lee y retorna una cadena de texto ingresada por el usuario desde el objeto Scanner 'entrada'.
     }
 
-    public static Float escribirReales(String mensaje, Scanner entrada){
-        System.out.println(mensaje);
-        return entrada.nextFloat();
+    public static Float escribirReales(String mensaje, Scanner entrada) {
+        System.out.println(mensaje); // Muestra un mensaje recibido como argumento, que solicita un número de punto flotante.
+        return entrada.nextFloat(); // Lee y retorna un número de punto flotante ingresado por el usuario desde el objeto Scanner 'entrada'.
     }
 
-
-
-    public static void mostrarInventario(ArrayList<Integer> idpro,ArrayList<String> nombrepro,ArrayList<Float> preciopro,ArrayList<Integer> cantidadpro,ArrayList<String>fechaVencimientopro ) {
+    public static void mostrarInventario(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<String> fechaVencimientopro) {
         for (int i = 0; i < idpro.size(); i++) {
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n",  idpro.get(i),nombrepro.get(i),preciopro.get(i),cantidadpro.get(i),fechaVencimientopro.get(i));
+            // Imprime los datos del inventario formateados en columnas con un ancho de 20 caracteres.
+            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", idpro.get(i), nombrepro.get(i), preciopro.get(i), cantidadpro.get(i), fechaVencimientopro.get(i));
         }
     }
 
@@ -142,66 +136,81 @@ public class Proyecto1_1 {
         try (BufferedReader br = new BufferedReader(new FileReader("inventario.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                idpro.add(Integer.parseInt(parts[0]));
-                nombrepro.add(parts[1]);
-                preciopro.add(Float.parseFloat(parts[2]));
-                cantidadpro.add(Integer.parseInt(parts[3]));
-                fechaVencimientopro.add(parts[4]);
+                String[] parts = line.split(","); // Divide la línea en partes usando la coma como separador.
+                idpro.add(Integer.parseInt(parts[0])); // Convierte la primera parte en un entero y la agrega a la lista de IDs.
+                nombrepro.add(parts[1]); // Agrega la segunda parte a la lista de nombres.
+                preciopro.add(Float.parseFloat(parts[2])); // Convierte la tercera parte en un número de punto flotante y la agrega a la lista de precios.
+                cantidadpro.add(Integer.parseInt(parts[3])); // Convierte la cuarta parte en un entero y la agrega a la lista de cantidades.
+                fechaVencimientopro.add(parts[4]); // Agrega la quinta parte a la lista de fechas de vencimiento.
             }
         } catch (FileNotFoundException e) {
             // El archivo no existe, se inicia con un inventario vacío.
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Maneja cualquier excepción no controlada e imprime el seguimiento de la pila en caso de error.
         }
     }
-
+    
     private static void guardarDatosInventario(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<String> fechaVencimientopro) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("inventario.txt"))) {
+            // Abre un BufferedWriter para escribir en el archivo "inventario.txt".
             for (int i = 0; i < idpro.size(); i++) {
+                // Itera a través de las listas de datos del producto.
                 String line = idpro.get(i) + "," + nombrepro.get(i) + "," + preciopro.get(i) + "," + cantidadpro.get(i) + "," + fechaVencimientopro.get(i);
-                bw.write(line);
-                bw.newLine();
+                bw.write(line); // Escribe una línea en el archivo que contiene los datos del producto, separados por comas.
+                bw.newLine(); // Escribe un salto de línea para separar las entradas de productos.
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Maneja cualquier excepción de E/S (entrada/salida) y muestra el seguimiento de la pila en caso de error.
         }
     }
+    
     //buscar el indice de un producto
-    public static int buscarIndice (String mensaje, Scanner entrada, ArrayList<Integer> idpro) {
-        System.out.println(mensaje);
-        int aux= entrada.nextInt();
+    public static int buscarIndice(String mensaje, Scanner entrada, ArrayList<Integer> idpro) {
+        System.out.println(mensaje); // Muestra un mensaje recibido como argumento, solicitando un valor.
+        int aux = entrada.nextInt(); // Lee un valor entero ingresado por el usuario desde la entrada estándar y lo almacena en 'aux'.
         for (int i = 0; i < idpro.size(); i++) {
-            if (aux==idpro.get(i)) {
-                return i;
+            // Itera a través de la lista de IDs de productos.
+            if (aux == idpro.get(i)) {
+                // Compara 'aux' con el valor en la posición 'i' de la lista de IDs.
+                return i; // Si encuentra una coincidencia, devuelve el índice (posición) en el que se encontró.
             }
         }
-
-        // Si no se encontró ninguna coincidencia, devolver -1
+    
+        // Si no se encontró ninguna coincidencia, devuelve -1 para indicar que no se encontró el valor.
         return -1;
     }
+    
     //metodo para que no se repita el id de los productos
-    public static int noRepetir(ArrayList<Integer> idpro,int id) {
+    public static int noRepetir(ArrayList<Integer> idpro, int id) {
         for (int i = 0; i < idpro.size(); i++) {
-            if (id==idpro.get(i)) {
-                return -1;
+            // Itera a través de la lista de IDs de productos.
+            if (id == idpro.get(i)) {
+                // Compara 'id' con el valor en la posición 'i' de la lista de IDs.
+                return -1; // Si encuentra una coincidencia, devuelve -1 para indicar que el ID ya está en uso y no se puede repetir.
             }
         }
+        // Si no se encontró ninguna coincidencia, devuelve 1 para indicar que el ID no se repite y se puede utilizar.
         return 1;
-    }
+    }    
 
     public static void ordenar(ArrayList<Integer> idpro, ArrayList<String> nombrepro, ArrayList<Float> preciopro, ArrayList<Integer> cantidadpro, ArrayList<String> fechaVencimientopro) {
         // Método de ordenamiento de burbuja
-        int n = idpro.size();
+    
+        int n = idpro.size(); // Obtiene el tamaño de la lista de IDs de productos (número de productos).
         for (int i = 0; i < n - 1; i++) {
+            // Itera a través de los elementos desde el primero hasta el penúltimo.
             for (int j = 0; j < n - i - 1; j++) {
+                // Itera a través de los elementos desde el primero hasta el último elemento no ordenado.
                 if (idpro.get(j) > idpro.get(j + 1)) {
+                    // Compara los IDs en las posiciones 'j' y 'j + 1'.
+                    // Si el ID en 'j' es mayor que el ID en 'j + 1', se necesita intercambiar los elementos para ordenar.
+    
                     // Intercambiar los elementos mal ordenados del idpro
                     int tempId = idpro.get(j);
                     idpro.set(j, idpro.get(j + 1));
                     idpro.set(j + 1, tempId);
     
-                    // Intercambiar el nombre con respecto al id
+                    // Intercambiar el nombre con respecto al ID
                     String tempNombre = nombrepro.get(j);
                     nombrepro.set(j, nombrepro.get(j + 1));
                     nombrepro.set(j + 1, tempNombre);
@@ -223,10 +232,5 @@ public class Proyecto1_1 {
                 }
             }
         }
-    }
-    
-
-
-
-
+    }    
 }
