@@ -18,6 +18,7 @@ public class Act_1 {
             int vu = teclado.nextInt();
             System.out.println("ingrese el articulo: ");
             String art = teclado.next();
+            double importe =teclado.nextDouble()
 
             if (cantidad>20) {
                 vt = vu * cantidad;

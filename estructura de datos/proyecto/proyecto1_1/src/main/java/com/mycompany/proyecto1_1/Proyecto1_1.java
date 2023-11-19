@@ -9,6 +9,7 @@ public class Proyecto1_1 { // Define la clase principal "Proyecto1_1".
     public static void main(String[] args) { // El método principal, el punto de entrada de tu programa Java.
         Scanner entrada = new Scanner(System.in); // Crea un objeto Scanner para la entrada del usuario.
         System.out.println("Hello World!"); // Imprime "Hello World!" en la consola.
+        
 
         // Definir variables
         int opc, n; // Declarar dos variables enteras opc y n.
@@ -20,9 +21,15 @@ public class Proyecto1_1 { // Define la clase principal "Proyecto1_1".
         ArrayList<Integer> cantidadpro = new ArrayList<>(); // Crea un ArrayList para almacenar cantidades de productos (como enteros).
         ArrayList<String> fechaVencimientopro = new ArrayList<>(); // Crea un ArrayList para almacenar fechas de vencimiento de productos (como cadenas).
 
+
+        //definir arrays factura
+        ArrayList<Integer> idfactura = new ArrayList<>();
+        ArrayList<Integer> cantidadfactura = new ArrayList<>();
+
+
         // Cargar datos del inventario desde un archivo (el método 'cargarDatosInventario' debería estar definido en alguna parte de tu código).
         cargarDatosInventario(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
-
+        
         // Ordenar los datos del inventario (el método 'ordenar' debería estar definido en alguna parte de tu código).
         ordenar(idpro, nombrepro, preciopro, cantidadpro, fechaVencimientopro);
 
@@ -89,7 +96,22 @@ public class Proyecto1_1 { // Define la clase principal "Proyecto1_1".
                     break;
             
                 case 2:
-                    System.out.println("Agregar venta");
+                        System.out.println("Agregar venta");
+                        //escriba el id de la factura
+                        int idf = escribirEnteros("ingrese el id de la factura", entrada);
+                        idfactura.add(idf);
+                        //solicitar el id, con el id el llamada el precio y descuenta de la cantidad general del inventario
+                        int indice = buscarIndice("ingrese el id del producto", entrada, idpro);
+                        int aux1 = cantidadpro.get(indice);
+                        //solicita la cantidad
+                        int cantf = escribirEnteros("ingrese la cantidad", entrada);
+                        cantidadfactura.add(cantf);
+                        aux1 -= cantf;
+                        cantidadpro.set(indice, aux1);
+                        //solicitar la cantidad, la cantidad la multiplica por el precio
+                        //solicitar el nombre del vendedor
+                        //mostar en pantalla la factura
+                        //y guardar en un archivo lo que se vendio con su id de factura
                     break;
                 case 3: // Si 'opc' es igual a 3, ejecuta lo siguiente:
                     System.out.println("Ver inventario"); // Muestra un mensaje indicando que se está visualizando el inventario.
