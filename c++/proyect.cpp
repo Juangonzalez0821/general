@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-// DeclaraciÃ³n de funciones
+// Declaración de funciones
 void archi();
 void nom();
 void cel();
 void cor();
 void escri();
 
-// DeclaraciÃ³n de variables globales
+// Declaración de variables globales
 FILE *arch;
 char archivo[20];
 char nombre[16];
@@ -18,11 +18,11 @@ int id = 0;  // Variable para almacenar el ID
 int main() {
     archi();  // Verifica la existencia del archivo y lo crea si no existe
     nom();    // Ingresa el nombre del usuario
-    cel();    // Ingresa el nÃºmero de telÃ©fono celular del usuario
-    cor();    // Ingresa el correo electrÃ³nico del usuario
-    escri();  // FunciÃ³n aÃºn por implementar (puede ser utilizada para futuras expansiones)
+    cel();    // Ingresa el número de teléfono celular del usuario
+    cor();    // Ingresa el correo electrónico del usuario
+    escri();  // Función aún por implementar (puede ser utilizada para futuras expansiones)
 
-    fclose(arch);  // Cierra el archivo despuÃ©s de escribir la informaciÃ³n
+    fclose(arch);  // Cierra el archivo después de escribir la información
     return 0;
 }
 
@@ -31,35 +31,35 @@ void archi() {
 
     if (arch == NULL) {
         fclose(arch);
-        arch = fopen("agenda.csv", "a");  // Si el archivo no existe, crÃ©alo en modo append
+        arch = fopen("agenda.csv", "a");  // Si el archivo no existe, créalo en modo append
         fprintf(arch, "ID;Nombre;Numero;Correo\n");
         printf("Se ha creado un nuevo archivo.\n");
     } else {
-        // Determina el Ãºltimo ID existente en el archivo
-        fseek(arch, -1, SEEK_END);  // Mueve el puntero al final del archivo
-        int c = fgetc(arch);
+        // Determina el último ID existente en el archivo
+        fseek(arch, 0, SEEK_END);  // Mueve el puntero al final del archivo
 
-        if (c == '\n') {
-            // Si el Ãºltimo caracter es un salto de lÃ­nea, retrocede otro caracter
-            fseek(arch, -1, SEEK_CUR);
-            c = fgetc(arch);
-        }
+        if (ftell(arch) > 0) {
+            fseek(arch, -1, SEEK_CUR);  // Retrocede un caracter
 
-        // Lee el Ãºltimo ID existente y actualiza la variable 'id'
-        while (c != ';' && c != EOF) {
-            fseek(arch, -2, SEEK_CUR);  // Retrocede dos caracteres para leer el ID
-            c = fgetc(arch);
-        }
+            int c = fgetc(arch);
 
-        if (c == ';') {
+            // Retrocede hasta encontrar un salto de línea (o hasta el inicio del archivo)
+            while (c != '\n' && ftell(arch) > 0) {
+                fseek(arch, -2, SEEK_CUR);  // Retrocede dos caracteres
+                c = fgetc(arch);
+            }
+
+            if (c == '\n') {
+                // Si el último caracter es un salto de línea, retrocede otro caracter
+                fseek(arch, -1, SEEK_CUR);
+            }
+
+            // Lee el último ID existente y actualiza la variable 'id'
             fscanf(arch, "%d;", &id);
-        } else {
-            // Si no hay ID existente, comienza desde 0
-            id = 0;
         }
 
         fclose(arch);
-        arch = fopen("agenda.csv", "a");  // Si el archivo existe, Ã¡brelo en modo append
+        arch = fopen("agenda.csv", "a");  // Si el archivo existe, ábrelo en modo append
         printf("Tu archivo se va a actualizar.\n");
     }
 }
@@ -81,8 +81,9 @@ void cor() {
 
 void escri() {
     // Incrementa el ID para el nuevo usuario
-    id++;
+    id = (id == 0) ? 1 : id + 1;
 
-    // Escribe la informaciÃ³n en el archivo
+    // Escribe la información en el archivo
     fprintf(arch, "\n%d;%s;%s;%s", id, nombre, celular, correo);
 }
+
