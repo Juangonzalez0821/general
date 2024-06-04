@@ -1,13 +1,19 @@
 <body>
+    <!-- Sección para mostrar las películas populares -->
     <div class="plan-section">
         <h2>Películas populares</h2>
+        <!-- Utiliza *ngFor para iterar sobre cada película en el array popularMovies -->
         <div class="movie-card" *ngFor="let movie of popularMovies">
             <div class="movie-info">
+                <!-- Muestra el título de la película -->
                 <h3 class="movie-title">{{ movie.title }}</h3>
                 <div class="image-container">
+                    <!-- Muestra la imagen de póster de la película con el atributo [src] -->
                     <img [src]="movie.poster_path" alt="{{ movie.title }} Poster">
                 </div>
+                <!-- Muestra una breve descripción de la película -->
                 <p class="movie-overview">{{ movie.overview }}</p>
+                <!-- Enlace para ver detalles de la película, utiliza [routerLink] para navegar a la ruta "/movie/:id" -->
                 <a class="btn-details" [routerLink]="['/movie', movie.id]">Ver detalles</a>
             </div>
         </div>

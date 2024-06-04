@@ -1,9 +1,11 @@
+/* Establece un reinicio de estilos básico */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Estilos generales para el cuerpo de la página */
 body {
     padding: 5%;
     display: flex;
@@ -14,6 +16,7 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
+/* Estilos para el contenedor principal de las películas */
 .plan-section {
     max-width: 800px;
     width: 100%;
@@ -25,12 +28,14 @@ body {
     text-align: center;
 }
 
+/* Estilos para el título de la sección */
 .plan-section h2 {
     color: #e0e0e0; /* Título en gris claro */
     font-size: 2.5em;
     margin-bottom: 30px;
 }
 
+/* Estilos para las tarjetas de películas */
 .movie-card {
     background-color: #0f3460; /* Fondo de las tarjetas en un tono intermedio de azul */
     border-radius: 12px;
@@ -41,26 +46,31 @@ body {
     color: #e0e0e0; /* Texto en gris claro */
 }
 
+/* Efecto hover para las tarjetas de películas */
 .movie-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos para la información de cada película */
 .movie-info {
     text-align: left;
 }
 
+/* Estilos para el título de la película */
 .movie-title {
     font-size: 1.8em;
     margin-bottom: 10px;
 }
 
+/* Estilos para la descripción de la película */
 .movie-overview {
     font-size: 1.2em;
     margin-bottom: 20px;
     color: #d1d1e9; /* Texto del resumen en gris claro */
 }
 
+/* Estilos para el botón de detalles */
 .btn-details {
     display: inline-block;
     padding: 10px 25px;
@@ -74,19 +84,21 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto hover para el botón de detalles */
 .btn-details:hover {
     background-color: #e58f1e;
     transform: scale(1.05);
 }
 
+/* Estilos para el contenedor de la imagen */
 .image-container {
     text-align: center;
 }
 
+/* Estilos para la imagen de la película */
 .image-container img {
     width: 50%;
     height: auto;
     border-radius: 8px;
     margin-bottom: 15px;
 }
-

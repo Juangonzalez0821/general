@@ -1,13 +1,15 @@
+// Importa el decorador Component y RouterOutlet de Angular Core para la definición de componentes y enrutamiento.
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+// Define el componente raíz de la aplicación.
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-root', // Selector del componente en el HTML.
+  standalone: true, // Define si el componente es independiente o forma parte de otro componente.
+  imports: [RouterOutlet], // Importa el RouterOutlet para el enrutamiento.
+  templateUrl: './app.component.html', // Ubicación del archivo HTML del componente.
+  styleUrls: ['./app.component.css'] // Ubicación de los archivos CSS de estilos del componente.
 })
 export class AppComponent {
-  title = 'MoviesApp';
+  title = 'MoviesApp'; // Propiedad que define el título de la aplicación.
 }

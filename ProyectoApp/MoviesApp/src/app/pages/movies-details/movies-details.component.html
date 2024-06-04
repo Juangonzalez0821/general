@@ -1,18 +1,32 @@
+<!-- Contenedor para la imagen de fondo -->
 <div class="bg-image" [ngStyle]="{'background-image': 'url(' + movie?.poster_path + ')'}"></div>
+
+<!-- Contenedor principal de la sección de detalles de película -->
 <div class="plan-section">
-    <h2>Detalles Peliculas</h2>
+    <h2>Detalles Películas</h2>
+
+    <!-- Contenedor para la información de la película -->
     <div class="movie-container">
+        <!-- Contenedor para la imagen de la película -->
         <div class="image-container">
             <img [src]="movie?.poster_path" alt="{{ movie?.title }} Poster">
         </div>
 
+        <!-- Tarjeta de detalles de la película -->
         <div class="movie-card">
+            <!-- Información de la película -->
             <div class="movie-info">
+                <!-- Título de la película -->
                 <h3 class="movie-title">{{ movie?.title }}</h3>
+                <!-- Descripción de la película -->
                 <p class="movie-overview">{{ movie?.overview }}</p>
+                <!-- Detalles adicionales de la película -->
                 <div class="details">
+                    <!-- Fecha de lanzamiento -->
                     <p><strong>Release Date:</strong> {{ movie?.release_date }}</p>
+                    <!-- Duración de la película -->
                     <p><strong>Runtime:</strong> {{ movie?.runtime }} minutes</p>
+                    <!-- Botón para volver a la lista de películas -->
                     <a class="btn-details" routerLink="/list-movies" routerLinkActive="active">volver</a>
                 </div>
             </div>

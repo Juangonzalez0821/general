@@ -1,9 +1,11 @@
+/* Establece un reinicio de estilos básico */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Estilos generales para el cuerpo de la página */
 body {
     display: flex;
     align-items: center;
@@ -15,6 +17,7 @@ body {
     overflow: hidden; /* Para que el fondo no se salga del body */
 }
 
+/* Estilos para la imagen de fondo */
 .bg-image {
     position: absolute;
     top: 0;
@@ -27,6 +30,7 @@ body {
     z-index: -1; /* Coloca la imagen detrás del contenido */
 }
 
+/* Estilos para el contenedor principal de la sección de detalles de película */
 .plan-section {
     max-width: 1000px; /* Aumentar el ancho máximo */
     width: 100%;
@@ -40,12 +44,14 @@ body {
     z-index: 1; /* Coloca el contenido encima del fondo */
 }
 
+/* Estilos para el título de la sección de detalles de película */
 .plan-section h2 {
     color: #e0e0e0; /* Título en gris claro */
     font-size: 2.5em;
     margin-bottom: 30px;
 }
 
+/* Estilos para el contenedor de información de la película */
 .movie-container {
     display: flex;
     align-items: flex-start;
@@ -53,12 +59,14 @@ body {
     margin-bottom: 15px; /* Añade espacio entre la imagen y la tarjeta */
 }
 
+/* Estilos para el contenedor de la imagen de la película */
 .image-container {
     width: 50%;
     max-width: 300px; /* Establece un ancho máximo para la imagen */
     margin-right: 20px; /* Agrega margen a la derecha de la imagen */
 }
 
+/* Estilos para la imagen de la película */
 .image-container img {
     width: 100%;
     height: auto;
@@ -66,6 +74,7 @@ body {
     margin-bottom: 15px;
 }
 
+/* Estilos para la tarjeta de detalles de la película */
 .movie-card {
     flex: 1; /* La tarjeta ocupa todo el espacio restante */
     max-width: none; /* Quita el ancho máximo de la tarjeta */
@@ -77,30 +86,36 @@ body {
     color: #e0e0e0;
 }
 
+/* Efecto hover para la tarjeta de detalles de la película */
 .movie-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilos para la información de la película */
 .movie-info {
     text-align: left;
 }
 
+/* Estilos para el título de la película */
 .movie-title {
     font-size: 1.8em;
     margin-bottom: 10px;
 }
 
+/* Estilos para la descripción de la película */
 .movie-overview {
     font-size: 1.2em;
     margin-bottom: 20px;
     color: #d1d1e9;
 }
 
+/* Estilos para los detalles adicionales de la película */
 .details {
     margin-top: 20px;
 }
 
+/* Estilos para el botón de volver */
 .btn-details {
     display: inline-block;
     padding: 10px 25px;
@@ -114,6 +129,7 @@ body {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* Efecto hover para el botón de volver */
 .btn-details:hover {
     background-color: #e58f1e;
     transform: scale(1.05);
