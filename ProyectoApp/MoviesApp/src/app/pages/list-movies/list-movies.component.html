@@ -1,0 +1,15 @@
+<body>
+    <div class="plan-section">
+        <h2>Películas populares</h2>
+        <div class="movie-card" *ngFor="let movie of popularMovies">
+            <div class="movie-info">
+                <h3 class="movie-title">{{ movie.title }}</h3>
+                <div class="image-container">
+                    <img [src]="movie.poster_path" alt="{{ movie.title }} Poster">
+                </div>
+                <p class="movie-overview">{{ movie.overview }}</p>
+                <a class="btn-details" [routerLink]="['/movie', movie.id]">Ver detalles</a>
+            </div>
+        </div>
+    </div>
+</body>
